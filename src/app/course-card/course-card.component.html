@@ -1,44 +1,44 @@
 <div class="course-card" [ngClass]="cardClasses()">
 
-        <div class="course-title" [ngStyle]="cardStyles()">
-            {{index}}: {{ course.description }}
-        </div>
+    <div class="course-title" [ngStyle]="cardStyles()">
+        {{index}}: {{ course.description | uppercase }}
+    </div>
 
-        @if(course.id == 1) {
-            <h2>Course with ID 1</h2>
-        } 
-        @else if (course.iconUrl) {
-            <img width="300" alt="Angular Logo"
-            src="'course.iconUrl'">
-        }
-        @else {
-            <h2>No image available!!</h2>
-        }
+    @if(course.id == 1) {
+        <h2>Course with ID 1</h2>
+    } 
+    @else if (course.iconUrl) {
+        <img width="300" alt="Angular Logo"
+        src="'course.iconUrl'">
+    }
+    @else {
+        <h2>No image available!!</h2>
+    }
 
+    <div class="course-description">
+        {{ course.longDescription }}
+    </div>
 
-        
-
-        <div class="course-description">
-            {{ course.longDescription }}
-        </div>
-
-        <div class="course-category">
-            @switch (course.category) {
-                @case ("BEGINNER") {
+    <div class="course-category">
+        @switch (course.category) {
+            @case ("BEGINNER") {
+                <ng-container>
                     <div class="category">Beginner</div>
-                }
-                @case ("INTERMEDIATE") {
-                    <div class="category">Intermediate</div>
-                }
-                @case ("ADVANCED") {
-                    <div class="category">Advanced</div>
-                }
-                @default {
-                    <div class="category">Unknown</div>
-                }
+                </ng-container>
+                
             }
-        </div>
+            @case ("INTERMEDIATE") {
+                <div class="category">Intermediate</div>
+            }
+            @case ("ADVANCED") {
+                <div class="category">Advanced</div>
+            }
+            @default {
+                <div class="category">Unknown</div>
+            }
+        }
+    </div>
 
-        <button (click)="viewCourse()">View Course</button>
+    <button (click)="viewCourse()">View Course</button>
 
 </div>

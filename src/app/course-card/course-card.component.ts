@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Pipe } from '@angular/core';
 import { Course } from '../model/course';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass, NgStyle, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'course-card',
-  imports: [NgClass, NgStyle],
+  imports: [NgClass, NgStyle, UpperCasePipe],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
