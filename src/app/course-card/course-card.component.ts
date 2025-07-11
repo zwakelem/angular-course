@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { COURSES } from 'src/db-data';
 import { Course } from '../model/course';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'course-card',
-  imports: [],
+  imports: [NgClass, NgStyle],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
@@ -22,6 +22,16 @@ export class CourseCardComponent {
   viewCourse() {
     console.log("course clicked ... ");
     this.onCourseEmitted.emit(this.course);
+  }
+
+  cardClasses() {
+    return {
+      'beginner': this.course.category == 'BEGINNER'
+    };
+  }
+
+  cardStyles() {
+    return {'text-decoration': 'underline'};
   }
 
 }
