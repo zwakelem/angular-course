@@ -2,16 +2,14 @@ import {
     AfterContentInit,
     AfterViewInit,
     Component,
-    ContentChild,
     ContentChildren,
     ElementRef,
     EventEmitter,
     Input,
     OnInit,
-    Output, QueryList, TemplateRef,
-    ViewChild
+    Output, QueryList,
+    ViewEncapsulation
 } from '@angular/core';
-import {COURSES} from '../../db-data';
 import {Course} from '../model/course';
 import {CourseImageComponent} from '../course-image/course-image.component';
 
@@ -19,7 +17,8 @@ import {CourseImageComponent} from '../course-image/course-image.component';
     selector: 'course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
-    standalone: false
+    standalone: false,
+    encapsulation: ViewEncapsulation.Emulated // this is the default
 })
 export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentInit {
 
