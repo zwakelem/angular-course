@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {COURSES} from '../db-data';
-import {Course} from './model/course';
-import {CourseCardComponent} from './course-card/course-card.component';
-import {HighlightedDirective} from './directives/highlighted.directive';
-import {Observable} from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Course } from './model/course';
+import { CoursesService } from './services/courses.service';
 
 @Component({
     selector: 'app-root',
@@ -13,16 +12,21 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
+    // the advantage of giving this observable variable to the template is that 
+    // the framework will take care of shutting it down when the component is destroyed
+    // thereby avoiding memory leaks!!
+    courses$: Observable<Course[]>;
 
-  courses = COURSES;
+    constructor(private courseService: CoursesService) {}
 
-  constructor() {
+    ngOnInit() {
+        this.courses$ = this.courseService.loadCourses();
+    }
 
-  }
-
-  ngOnInit() {
-  }
-
-
-
+    save(course: Course) {
+        this.courseService.saveCourse(course)
+            .subscribe(
+                () => console.log('course saved!!')
+            );
+    }
 }
