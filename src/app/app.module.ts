@@ -9,13 +9,21 @@ import { HighlightedDirective } from './directives/highlighted.directive';
 import { NgxUnlessDirective } from './directives/ngx-unless.directive';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-@NgModule({ declarations: [
+@NgModule({ 
+    declarations: [
         AppComponent,
         CourseCardComponent,
         CourseImageComponent,
         HighlightedDirective,
         NgxUnlessDirective
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule
+    ], 
+    providers: [
+        provideHttpClient(withInterceptorsFromDi())
+    ] 
+})
 export class AppModule { }

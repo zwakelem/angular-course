@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppConfig, CONFIG_TOKEN } from './config';
 import { Course } from './model/course';
 import { CoursesService } from './services/courses.service';
 
@@ -16,7 +17,11 @@ export class AppComponent implements OnInit {
     // thereby avoiding memory leaks!!
     courses$: Observable<Course[]>;
 
-    constructor(private courseService: CoursesService) {}
+    constructor(private courseService: CoursesService,
+                @Inject(CONFIG_TOKEN) private config: AppConfig
+    ) {
+        console.log(config);
+    }
 
     ngOnInit() {
         this.courses$ = this.courseService.loadCourses();
