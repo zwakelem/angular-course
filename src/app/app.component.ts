@@ -12,15 +12,19 @@ import { CoursesService } from './services/courses.service';
 })
 export class AppComponent implements OnInit {
 
-    // the advantage of giving this observable variable to the template is that 
+    // the advantage of giving this observable variable to the template is that
     // the framework will take care of shutting it down when the component is destroyed
     // thereby avoiding memory leaks!!
+    // courses$: Observable<Course[]>;
+
+    // courses = COURSES;
+
     courses$: Observable<Course[]>;
 
     constructor(private courseService: CoursesService,
                 @Inject(CONFIG_TOKEN) private config: AppConfig
     ) {
-        console.log(config);
+        // console.log(config);
     }
 
     ngOnInit() {

@@ -1,4 +1,5 @@
 import {
+    Attribute,
     Component,
     EventEmitter,
     Input,
@@ -24,23 +25,22 @@ export class CourseCardComponent implements OnInit {
     @Output('courseChanged')
     courseEmitter = new EventEmitter<Course>();
 
-
-    constructor() {
-
+    constructor(@Attribute('type') private type: string) {
+        // Attribute is used to improve performance when input called type 
+        // is not expected to change, its stops Angular framework from 
+        // continuosly checking its value
+        console.log(type);
     }
 
-    ngOnInit() {
-
-    }
-
+    ngOnInit() {}
 
     onSaveClicked(description:string) {
-
         this.courseEmitter.emit({...this.course, description});
-
     }
 
-
+    onTitleChanged(newTitle: string) {
+        this.course.description = newTitle;
+    }
 
 
 }
