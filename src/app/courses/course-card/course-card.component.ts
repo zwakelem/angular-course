@@ -3,10 +3,11 @@ import {
     Component,
     EventEmitter,
     Input,
+    OnDestroy,
     OnInit,
     Output
 } from '@angular/core';
-import { Course } from '../model/course';
+import { Course } from '../../model/course';
 
 @Component({
     selector: 'course-card',
@@ -14,7 +15,7 @@ import { Course } from '../model/course';
     styleUrls: ['./course-card.component.css'],
     standalone: false
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, OnDestroy {
 
     @Input()
     course: Course;
@@ -33,6 +34,10 @@ export class CourseCardComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+    ngOnDestroy(): void {
+        console.log('Destroy ...');
+    }
 
     onSaveClicked(description:string) {
         this.courseEmitter.emit({...this.course, description});
