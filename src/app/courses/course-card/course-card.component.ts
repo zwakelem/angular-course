@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
     Attribute,
     Component,
@@ -13,7 +14,8 @@ import { Course } from '../../model/course';
     selector: 'course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
-    standalone: false
+    imports: [ CommonModule ],
+    standalone: true
 })
 export class CourseCardComponent implements OnInit, OnDestroy {
 

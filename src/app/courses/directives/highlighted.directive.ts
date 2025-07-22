@@ -3,7 +3,7 @@ import {Directive, EventEmitter, HostBinding, HostListener, Input, Output} from 
 @Directive({
     selector: '[highlighted]',
     exportAs: 'hl',
-    standalone: false
+    standalone: true
 })
 export class HighlightedDirective {
 
@@ -14,9 +14,7 @@ export class HighlightedDirective {
     toggleHighlight = new EventEmitter();
 
     constructor() {
-
         console.log('Directive created..');
-
     }
 
     @HostBinding('class.highlighted')
@@ -43,7 +41,4 @@ export class HighlightedDirective {
         this.isHighlighted = !this.isHighlighted;
         this.toggleHighlight.emit(this.isHighlighted);
     }
-
-
-
 }

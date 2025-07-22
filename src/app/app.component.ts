@@ -3,12 +3,16 @@ import { Observable } from 'rxjs';
 import { AppConfig, CONFIG_TOKEN } from './config';
 import { Course } from './model/course';
 import { CoursesService } from './courses/courses.service';
+import { CourseCardComponent } from './courses/course-card/course-card.component';
+import { CourseImageComponent } from './courses/course-image/course-image.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    standalone: false
+    standalone: true,
+    imports: [CourseCardComponent, CourseImageComponent, CommonModule]
 })
 export class AppComponent implements OnInit {
 
