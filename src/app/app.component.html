@@ -11,7 +11,8 @@
 
 <div>
 
-    <div class="courses" *ngIf="(courses$ | async) as courses">
+    @defer {
+        <div class="courses" *ngIf="(courses$ | async) as courses">
 
     <course-card *ngFor="let course of courses"
                 (courseChanged)="save($event)"
@@ -23,6 +24,9 @@
     </course-card>
 
     </div>
+    }
+
+    
 
 
 </div>
