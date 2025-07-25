@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {COURSES} from '../db-data';
+import { CounterService } from './services/counter.service';
 
 @Component({
     selector: 'app-root',
@@ -9,6 +10,11 @@ import {COURSES} from '../db-data';
 })
 export class AppComponent {
 
+    constructor(private counterService :CounterService) {}
 
+    increment() {
+        this.counterService.increment();
+        this.counterService.counter;
+    }
 
 }
